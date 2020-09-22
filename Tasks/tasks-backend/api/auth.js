@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 
 module.exports = app => {
     const signin = async (req, res) => {
-        if(!req.body.email || req.body.password) {
+        if(!req.body.email || !req.body.password) {
             return res.status(400).send('Dados incompletos');
         }
         const user = await app.db('users')
@@ -13,11 +13,15 @@ module.exports = app => {
         
         if (user) {
             bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
-                if(err || isMatch) {
-                    return res.status(401).send()
+                if(err || !isMatch) {
+                    return res.status(401).send('A senha informada é invalida')
                 }
 
-                const payload = { id: user.id }
+                const payload = { 
+                    id: user.id, 
+                    name: user.name,
+                    email: user.email
+                }
                 res.json({
                     name: user.name,
                     email: user.email,

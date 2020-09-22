@@ -54,10 +54,10 @@ module.exports = app => {
                 return res.status(400).send(msg);
             }
 
-            const doneAt = task.doneAt ? null : new : new Date();
+            const doneAt = task.doneAt ? null : new Date();
             updateTaskDoneAt(req, res, doneAt)
         })
         .catch(err => res.status(400).json(err))
     }
-    return { getTasks, save, remove, toggleTasks }s
+    return { getTasks, save, remove, toggleTasks }
 }
