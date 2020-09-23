@@ -11,8 +11,8 @@ module.exports = app => {
             .catch(err => res.status(500).json(err));
     }
 
-    const save = (req, any) => {
-        if (!req.body.desc.trin()){
+    const save = (req, res) => {
+        if (!req.body.desc.trim()){
             return res.status(400).send('Descrição é uma campo obrigatório');
         }
         req.body.userId = req.user.id;
