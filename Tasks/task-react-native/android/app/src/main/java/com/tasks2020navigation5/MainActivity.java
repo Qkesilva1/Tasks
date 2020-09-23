@@ -1,4 +1,4 @@
-package com.tasks;
+package com.tasks2020navigation5;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "tasks";
+    return "tasks2020Navigation5";
   }
 }
